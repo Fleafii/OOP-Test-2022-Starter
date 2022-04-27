@@ -1,13 +1,19 @@
 package ie.tudublin;
 
 import java.util.ArrayList;
+import java.io.*;
 
 import processing.core.PApplet;
 import processing.data.Table;
 import processing.data.TableRow;
 
+
+
 public class NematodeVisualiser extends PApplet
 {
+
+	Table table;
+	ArrayList<Nematode> nematodes;
 
 	public void keyPressed()
 	{		
@@ -26,12 +32,18 @@ public class NematodeVisualiser extends PApplet
 	{
 		colorMode(HSB);
 		background(0);
-		smooth();				
+		smooth();	
+		loadNematodes();			
 	}
 	
 
 	public void loadNematodes()
 	{
+		table = loadTable("nematodes.csv", "header");
+		for(TableRow row :table.rows()){
+			nematodes.add(new Nematode(row));
+		}
+		
 	}
 
 

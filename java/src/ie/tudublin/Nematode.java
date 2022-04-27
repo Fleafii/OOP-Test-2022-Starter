@@ -7,18 +7,22 @@ public class Nematode {
     private String name;
     private int length;
     private int limbs;
-    private char gender;
+    private String gender;
     private int eyes;
 
     public Nematode(){
         this.name = "Default";
         this.length = 0;
         this.limbs = 0;
-        this.gender = 'n';
+        this.gender = "n";
         this.eyes = 0;
     }
     public Nematode(TableRow tr){
-
+        this.name = tr.getString("name");
+        this.length = tr.getInt("length");
+        this.limbs = tr.getInt("limbs");
+        this.gender = tr.getString("gender");
+        this.eyes = tr.getInt("eyes");
     }
 
     public String getName(){
@@ -30,7 +34,7 @@ public class Nematode {
     public int getLimbs(){
         return this.limbs;
     }
-    public char getGender(){
+    public String getGender(){
         return this.gender;
     }
     public int getEyes(){
