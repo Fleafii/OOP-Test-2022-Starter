@@ -13,6 +13,7 @@ public class NematodeVisualiser extends PApplet
 
 	Table table;
 	ArrayList<Nematode> nematodes = new ArrayList<Nematode>();
+	Nematode current;
 
 	public float border;
 
@@ -20,6 +21,21 @@ public class NematodeVisualiser extends PApplet
 	{		
 		if (keyCode == LEFT)
 		{
+			int find = nematodes.indexOf(current);
+			if(find > nematodes.size()-2){
+				current = nematodes.get(0);
+			}else{
+				current = nematodes.get(find+1);
+			}
+		}	
+		if (keyCode == RIGHT)
+		{
+			int find = nematodes.indexOf(current);
+			if(find == 0){
+				current = nematodes.get(12);
+			}else{
+				current = nematodes.get(find-1);
+			}
 		}		
 	}
 
@@ -35,6 +51,7 @@ public class NematodeVisualiser extends PApplet
 		background(0);
 		smooth();	
 		loadNematodes();
+		current = nematodes.get(0);
 		
 		border = width * 0.1f;
 	}
@@ -52,7 +69,7 @@ public class NematodeVisualiser extends PApplet
 
 	public void draw()
 	{	
-		
-		nematodes.get(5).render(this);
+		background(0);
+		current.render(this);
 	}
 }
