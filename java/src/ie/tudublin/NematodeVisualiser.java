@@ -1,7 +1,6 @@
 package ie.tudublin;
 
 import java.util.ArrayList;
-import java.io.*;
 
 import processing.core.PApplet;
 import processing.data.Table;
@@ -13,7 +12,9 @@ public class NematodeVisualiser extends PApplet
 {
 
 	Table table;
-	ArrayList<Nematode> nematodes;
+	ArrayList<Nematode> nematodes = new ArrayList<Nematode>();
+
+	public float border;
 
 	public void keyPressed()
 	{		
@@ -33,7 +34,9 @@ public class NematodeVisualiser extends PApplet
 		colorMode(HSB);
 		background(0);
 		smooth();	
-		loadNematodes();			
+		loadNematodes();
+		
+		border = width * 0.1f;
 	}
 	
 
@@ -49,5 +52,7 @@ public class NematodeVisualiser extends PApplet
 
 	public void draw()
 	{	
+		
+		nematodes.get(5).render(this);
 	}
 }
